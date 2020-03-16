@@ -1,0 +1,67 @@
+package com.projeto.catalog.usecase
+
+
+import com.projeto.catalog.gateway.FindProductsBySellerIdGateway
+import com.projeto.catalog.gateway.domain.ProductDatabaseDomain
+import spock.lang.Specification
+
+class FindProductBySellerIdUseCaseSpec extends Specification {
+
+    FindProductsBySellerIdGateway findProductsBySellerIdGateway = Mock(FindProductsBySellerIdGateway)
+    FindProductBySellerIdUseCase findProductBySellerIdUseCase = new FindProductBySellerIdUseCase(findProductsBySellerIdGateway)
+
+    def "Deve retornar uma lista com 1 produto"() {
+        given: "Um sellerId válido"
+        def sellerId = 1
+
+        when: "Eu executo o gateway de busca por sellerId"
+        1 * findProductsBySellerIdGateway.execute(_ as Integer) >> {
+            args ->
+                assert args[0] == 1
+                return productList()
+        }
+
+        and: "Eu executo o caso de uso para buscar todos os pedidos por um SellerId"
+        def result = findProductBySellerIdUseCase.execute(sellerId)
+
+        then: "Uma lista vazia deve ser retornada"
+        result.size() == 1
+        result[0].name == "Camisa"
+        result[0].description == "Camisa maneira"
+        result[0].quantity == 40
+        result[0].sellerId == 1
+        result[0].images.size() == 2
+        result[0].images[0].link == "image1.jpg"
+        result[0].images[1].link == "image2.jpg"
+
+    }
+
+    def "Deve retornar uma lista vazia quando não existem produtos cadastrados pra um sellerId especifico no banco de dados"() {
+        given: "Um sellerId válido"
+        def sellerId = 1
+
+        when: "Eu executo o gateway de busca por sellerId"
+        1 * findProductsBySellerIdGateway.execute(_ as Integer) >> {
+            args ->
+                assert args[0] == 1
+                return emptyProductList()
+        }
+
+        and: "Eu executo o caso de uso para buscar todos os pedidos por um SellerId"
+        def result = findProductBySellerIdUseCase.execute(sellerId)
+
+        then: "Uma lista vazia deve ser retornada"
+        result.isEmpty()
+    }
+
+    private ArrayList<ProductDatabaseDomain> productList() {
+        List<ProductDatabaseDomain> productDatabaseDomainList = new ArrayList<>()
+        productDatabaseDomainList.add(new ProductDatabaseDomain(1L, 1, "Camisa", ["image1.jpg", "image2.jpg"], "Camisa maneira", 40))
+        productDatabaseDomainList
+    }
+
+    private ArrayList<ProductDatabaseDomain> emptyProductList() {
+        List<ProductDatabaseDomain> productDatabaseDomainList = new ArrayList<>()
+        productDatabaseDomainList
+    }
+}
