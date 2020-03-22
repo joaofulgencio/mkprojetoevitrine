@@ -26,7 +26,7 @@ class FindProductsBySellerIdUseCaseSpec extends Specification {
 
         then: "Uma lista vazia deve ser retornada"
         result.size() == 1
-        result[0].name == "Camisa"
+        result[0].productName == "Camisa"
         result[0].description == "Camisa maneira"
         result[0].quantity == 40
         result[0].sellerId == 1

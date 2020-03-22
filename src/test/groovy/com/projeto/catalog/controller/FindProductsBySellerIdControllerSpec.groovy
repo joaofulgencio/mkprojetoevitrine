@@ -39,19 +39,19 @@ class FindProductsBySellerIdControllerSpec extends Specification {
         }
 
 
-        then: ""
+        then: "the request must be done with successful response"
         Gson gson = new Gson()
         def response = mockMvc.perform(get("/catalog/{sellerId}", sellerId).contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn()
                 .response
         Type listType = new TypeToken<ArrayList<ProductResponse>>() {}.getType()
         List<ProductResponse> responseObject = gson.fromJson(response.contentAsString, listType)
-        responseObject[0].name == "Camisa"
+        responseObject[0].productName == "Camisa"
         responseObject[0].sellerId == 1
         responseObject[0].quantity == 40
         responseObject[0].description == "camisa maneira"
         responseObject[0].images.size() == 1
         responseObject[0].images[0].link == "image1.jpg"
-        responseObject[1].name == "Camisa 2"
+        responseObject[1].productName == "Camisa 2"
         responseObject[1].sellerId == 1
         responseObject[1].quantity == 20
         responseObject[1].description == "camisa maneira 2"

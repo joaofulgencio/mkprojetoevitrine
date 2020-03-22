@@ -22,7 +22,7 @@ class RegisterProductUseCaseSpec extends Specification {
                 assert product.sellerId == 0
                 assert product.quantity == 40
                 assert product.description == "Camisa maneira"
-                assert product.name == "Camisa"
+                assert product.productName == "Camisa"
                 assert product.images[0].link == "image1.jpg"
                 assert product.images[1].link == "image2.jpg"
                 new ProductDatabaseDomain(1L, 1, "Camisa", ["image1.jpg", "image2.jpg"], "Camisa maneira", 40)
@@ -33,7 +33,7 @@ class RegisterProductUseCaseSpec extends Specification {
 
         then: "O produto deve ser retornado"
         product.sellerId == 1
-        product.name == "Camisa"
+        product.productName == "Camisa"
         product.description == "Camisa maneira"
         product.quantity == 40
 

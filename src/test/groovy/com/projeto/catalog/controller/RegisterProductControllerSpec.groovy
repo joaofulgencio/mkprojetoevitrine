@@ -41,11 +41,11 @@ class RegisterProductControllerSpec extends Specification {
         }
 
 
-        then: ""
+        then: "The request must be done with successful response"
         def response = mockMvc.perform(post("/catalog/{sellerId}", sellerId).content(jsonRequest).contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn()
                 .response
         ProductResponse responseObject = gson.fromJson(response.contentAsString, ProductResponse.class)
-        responseObject.name == "Camisa"
+        responseObject.productName == "Camisa"
         responseObject.sellerId == 1
         responseObject.quantity == 40
         responseObject.description == "camisa maneira"
