@@ -19,9 +19,9 @@ public class RegisterProductGatewayImpl implements RegisterProductGateway {
 
     @Override
     public ProductDatabaseDomain execute(int sellerId, Product product) {
-        List<String> listaDeImagens = product.getImages().stream().map(Image::getLink).collect(Collectors.toList());
+        List<String> imageList = product.getImages().stream().map(Image::getLink).collect(Collectors.toList());
         ProductDatabaseDomain productDb = Translator.translate(product, ProductDatabaseDomain.class);
-        productDb.setImages(listaDeImagens);
+        productDb.setImages(imageList);
         productDb.setSellerId(sellerId);
         return productRepository.save(productDb);
     }

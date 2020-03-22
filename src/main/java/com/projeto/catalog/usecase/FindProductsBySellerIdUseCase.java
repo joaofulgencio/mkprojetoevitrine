@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
-public class FindProductBySellerIdUseCase {
+public class FindProductsBySellerIdUseCase {
 
     private final FindProductsBySellerIdGateway findProductsBySellerIdGateway;
 

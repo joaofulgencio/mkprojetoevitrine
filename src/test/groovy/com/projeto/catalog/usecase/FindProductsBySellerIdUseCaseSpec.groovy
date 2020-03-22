@@ -5,10 +5,10 @@ import com.projeto.catalog.gateway.FindProductsBySellerIdGateway
 import com.projeto.catalog.gateway.domain.ProductDatabaseDomain
 import spock.lang.Specification
 
-class FindProductBySellerIdUseCaseSpec extends Specification {
+class FindProductsBySellerIdUseCaseSpec extends Specification {
 
     FindProductsBySellerIdGateway findProductsBySellerIdGateway = Mock(FindProductsBySellerIdGateway)
-    FindProductBySellerIdUseCase findProductBySellerIdUseCase = new FindProductBySellerIdUseCase(findProductsBySellerIdGateway)
+    FindProductsBySellerIdUseCase findProductBySellerIdUseCase = new FindProductsBySellerIdUseCase(findProductsBySellerIdGateway)
 
     def "Deve retornar uma lista com 1 produto"() {
         given: "Um sellerId válido"
