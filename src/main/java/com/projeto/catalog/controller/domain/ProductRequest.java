@@ -17,6 +17,7 @@ public class ProductRequest {
     private String productName;
     private List<Image> images;
     private String description;
+    private double price;
     private int quantity;
 
 }

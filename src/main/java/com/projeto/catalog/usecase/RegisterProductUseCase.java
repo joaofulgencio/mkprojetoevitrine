@@ -19,9 +19,9 @@ public class RegisterProductUseCase {
 
     private final RegisterProductGateway registerProductGateway;
 
-    public Product execute(int sellerId, Product product) throws RegisterProductUseCaseExeception {
+    public Product execute(String sellerEmail, Product product) throws RegisterProductUseCaseExeception {
 
-        ProductDatabaseDomain execute = registerProductGateway.execute(sellerId, product);
+        ProductDatabaseDomain execute = registerProductGateway.execute(sellerEmail, product);
         List<Image> imageList = execute.getImages().stream().map(Image::new).collect(Collectors.toCollection(ArrayList::new));
         Product productSaved = Translator.translate(execute, Product.class);
         productSaved.setImages(imageList);

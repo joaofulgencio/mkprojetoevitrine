@@ -11,10 +11,11 @@ import java.util.List;
 @NoArgsConstructor
 public class Product {
 
-    private int sellerId;
+    private String sellerEmail;
     private String productName;
     private List<Image> images;
     private String description;
+    private float price;
     private int quantity;
 
 }

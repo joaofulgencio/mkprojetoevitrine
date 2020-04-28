@@ -14,9 +14,9 @@ public class FindProductsBySellerIdGatewayImpl implements FindProductsBySellerId
     private final ProductExtentedRepository productRepository;
 
     @Override
-    public List<ProductDatabaseDomain> execute(int sellerId) {
+    public List<ProductDatabaseDomain> execute(String sellerEmail) {
 
-        return productRepository.findBySellerId(sellerId);
-        
+        return productRepository.findBySellerEmail(sellerEmail);
+
     }
 }

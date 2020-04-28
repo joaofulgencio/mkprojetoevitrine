@@ -20,11 +20,12 @@ public class ProductDatabaseDomain {
     @GeneratedValue
     private long id;
 
-    private int sellerId;
+    private String sellerEmail;
     private String productName;
     @ElementCollection
     private List<String> images;
     private String description;
+    private float price;
     private int quantity;
 
 }

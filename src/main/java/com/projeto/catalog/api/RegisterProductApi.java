@@ -12,6 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("catalog")
 public interface RegisterProductApi {
 
-    @PostMapping(path = "/{sellerId}")
-    ResponseEntity<ProductResponse> execute(@RequestBody ProductRequest productRequest, @PathVariable("sellerId") int sellerId) throws RegisterProductUseCaseExeception;
+    @PostMapping(path = "/{sellerEmail}")
+    ResponseEntity<ProductResponse> execute(@RequestBody ProductRequest productRequest, @PathVariable("sellerEmail") String sellerEmail) throws RegisterProductUseCaseExeception;
 }

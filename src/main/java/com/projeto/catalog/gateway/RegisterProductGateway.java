@@ -5,5 +5,5 @@ import com.projeto.catalog.gateway.domain.ProductDatabaseDomain;
 
 public interface RegisterProductGateway {
 
-    ProductDatabaseDomain execute(int sellerId, Product product);
+    ProductDatabaseDomain execute(String sellerEmail, Product product);
 }
