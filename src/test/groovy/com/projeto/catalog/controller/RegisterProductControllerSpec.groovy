@@ -28,8 +28,8 @@ class RegisterProductControllerSpec extends Specification {
 
     def "Should pass request correctly to useCase"() {
         given: "a valid request"
-        ProductRequest requestBody = new ProductRequest("Camisa", [new Image("image1.jpg")], "camisa maneira", 40)
-        String sellerEmail = "joaooctf@gmail.com"
+        ProductRequest requestBody = new ProductRequest("Camisa", [new Image("image1.jpg")], "camisa maneira", 40, 20)
+        String sellerId = "joaooctf@gmail.com"
 
         Gson gson = new Gson()
         String jsonRequest = gson.toJson(requestBody)
@@ -37,17 +37,19 @@ class RegisterProductControllerSpec extends Specification {
         when: "RegisterProductUseCase execute is called"
 
         1 * registerProductUseCase.execute(_ as String, _ as Product) >> {
-            return new Product("joaooctf@gmail.com", "Camisa", [new Image("image1.jpg")], "camisa maneira", 40)
+            return new Product("joaooctf@gmail.com", "Camisa", [new Image("image1.jpg")], "camisa maneira", 40, 20)
         }
 
 
         then: "The request must be done with successful response"
-        def response = mockMvc.perform(post("/catalog/{sellerEmail}", sellerEmail).content(jsonRequest).contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn()
+        def response = mockMvc.perform(post("/catalog/{sellerId}", sellerId).content(jsonRequest).contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn()
                 .response
         ProductResponse responseObject = gson.fromJson(response.contentAsString, ProductResponse.class)
         responseObject.productName == "Camisa"
+        responseObject.productName == "Camisa"
         responseObject.sellerEmail == "joaooctf@gmail.com"
-        responseObject.quantity == 40
+        responseObject.quantity == 20
+        responseObject.price == 40
         responseObject.description == "camisa maneira"
         responseObject.images.size() == 1
         responseObject.images[0].link == "image1.jpg"

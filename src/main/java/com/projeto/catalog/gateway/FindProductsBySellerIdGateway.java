@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface FindProductsBySellerIdGateway {
 
-    List<ProductDatabaseDomain> execute(String sellerEmail);
+    List<ProductDatabaseDomain> execute(String sellerId);
 
 }

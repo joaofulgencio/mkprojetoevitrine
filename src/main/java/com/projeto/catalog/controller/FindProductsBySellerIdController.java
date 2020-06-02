@@ -24,8 +24,8 @@ public class FindProductsBySellerIdController implements FindProductsBySellerIdA
     }
 
     @Override
-    public ResponseEntity<?> execute(String sellerEmail) {
-        List<ProductResponse> responseList = findProductsBySellerIdUseCase.execute(sellerEmail).stream().map(FindProductsBySellerIdController::apply).collect(Collectors.toList());
+    public ResponseEntity<?> execute(String sellerId) {
+        List<ProductResponse> responseList = findProductsBySellerIdUseCase.execute(sellerId).stream().map(FindProductsBySellerIdController::apply).collect(Collectors.toList());
         return new ResponseEntity<>(responseList, HttpStatus.OK);
     }
 

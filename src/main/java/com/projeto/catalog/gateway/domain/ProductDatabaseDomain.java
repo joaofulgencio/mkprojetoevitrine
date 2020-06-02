@@ -17,10 +17,8 @@ import java.util.List;
 public class ProductDatabaseDomain {
 
     @Id
-    @GeneratedValue
-    private long id;
-
     private String sellerEmail;
+    private String id;
     private String productName;
     @ElementCollection
     private List<String> images;

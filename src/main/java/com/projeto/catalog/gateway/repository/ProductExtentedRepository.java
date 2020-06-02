@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface ProductExtentedRepository extends ProductRepository {
 
-    List<ProductDatabaseDomain> findBySellerEmail(String sellerEmail);
+    List<ProductDatabaseDomain> findBySellerId(String sellerId);
 }

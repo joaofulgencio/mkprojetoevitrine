@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("catalog")
 public interface FindProductsBySellerIdApi {
 
-    @GetMapping(path = "/{sellerEmail}")
-    ResponseEntity<?> execute(@PathVariable("sellerEmail") String sellerEmail);
+    @GetMapping(path = "/{sellerId}")
+    ResponseEntity<?> execute(@PathVariable("sellerId") String sellerId);
 
 }

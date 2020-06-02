@@ -18,8 +18,8 @@ public class FindProductsBySellerIdUseCase {
 
     private final FindProductsBySellerIdGateway findProductsBySellerIdGateway;
 
-    public List<Product> execute(String sellerEmail) {
-        List<ProductDatabaseDomain> execute = findProductsBySellerIdGateway.execute(sellerEmail);
+    public List<Product> execute(String sellerId) {
+        List<ProductDatabaseDomain> execute = findProductsBySellerIdGateway.execute(sellerId);
         List<Product> productList = new ArrayList<>();
         execute.forEach(product -> {
             Product productTranslated = Translator.translate(product, Product.class);

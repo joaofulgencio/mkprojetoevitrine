@@ -12,7 +12,7 @@ class RegisterProductUseCaseSpec extends Specification {
 
     def "Deve cadastrar um novo produto para um seller"() {
         given: "Um produto valido"
-        def produtoValido = new Product("joaooctf@gmail.com", "Camisa", [new Image("image1.jpg"), new Image('image2.jpg')], "Camisa maneira", 40)
+        def produtoValido = new Product("joaooctf@gmail.com", "Camisa", [new Image("image1.jpg"), new Image('image2.jpg')], "Camisa maneira", 40, 20)
 
         when: "Eu chamo o gateway para salvar"
         1 * registerProductGateway.execute(_ as String, _ as Product) >> {
@@ -20,12 +20,13 @@ class RegisterProductUseCaseSpec extends Specification {
                 assert args[0] == "joaooctf@gmail.com"
                 Product product = args[1]
                 assert product.sellerEmail == "joaooctf@gmail.com"
-                assert product.quantity == 40
+                assert product.quantity == 20
+                assert product.price == 40
                 assert product.description == "Camisa maneira"
                 assert product.productName == "Camisa"
                 assert product.images[0].link == "image1.jpg"
                 assert product.images[1].link == "image2.jpg"
-                new ProductDatabaseDomain(1L, "joaooctf@gmail.com", "Camisa", ["image1.jpg", "image2.jpg"], "Camisa maneira", 40)
+                new ProductDatabaseDomain("joaooctf@gmail.com", "joaooctf@gmail.com", "Camisa", ["image1.jpg", "image2.jpg"], "Camisa maneira", 40, 20)
         }
 
         and: "Eu chamo o usecase de registro"
@@ -35,7 +36,8 @@ class RegisterProductUseCaseSpec extends Specification {
         product.sellerEmail == "joaooctf@gmail.com"
         product.productName == "Camisa"
         product.description == "Camisa maneira"
-        product.quantity == 40
+        product.quantity == 20
+        product.price == 40
 
     }
 }

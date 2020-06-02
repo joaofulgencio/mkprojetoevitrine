@@ -56,7 +56,7 @@ class FindProductsBySellerIdUseCaseSpec extends Specification {
 
     private ArrayList<ProductDatabaseDomain> productList() {
         List<ProductDatabaseDomain> productDatabaseDomainList = new ArrayList<>()
-        productDatabaseDomainList.add(new ProductDatabaseDomain(1L,"joaooctf@gmail.com", "Camisa", ["image1.jpg", "image2.jpg"], "Camisa maneira", 40))
+        productDatabaseDomainList.add(new ProductDatabaseDomain("joaooctf@gmail.com", "joaooctf@gmail.com", "Camisa", ["image1.jpg", "image2.jpg"], "Camisa maneira", 20, 40))
         productDatabaseDomainList
     }
 
