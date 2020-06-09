@@ -2,8 +2,6 @@ package com.projeto.catalog.domain;
 
 import lombok.*;
 
-import java.util.List;
-
 @Getter
 @Setter
 @Builder
@@ -11,9 +9,11 @@ import java.util.List;
 @NoArgsConstructor
 public class Product {
 
+    private int id;
+    private String sellerId;
     private String sellerEmail;
     private String productName;
-    private List<Image> images;
+    private String images;
     private String description;
     private float price;
     private int quantity;

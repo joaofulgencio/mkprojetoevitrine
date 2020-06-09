@@ -1,13 +1,13 @@
 package com.projeto.catalog.usecase
 
 
-import com.projeto.catalog.gateway.FindProductsBySellerIdGateway
+import com.projeto.catalog.gateway.FindProducts
 import com.projeto.catalog.gateway.domain.ProductDatabaseDomain
 import spock.lang.Specification
 
 class FindProductsBySellerIdUseCaseSpec extends Specification {
 
-    FindProductsBySellerIdGateway findProductsBySellerIdGateway = Mock(FindProductsBySellerIdGateway)
+    FindProducts findProductsBySellerIdGateway = Mock(FindProducts)
     FindProductsBySellerIdUseCase findProductBySellerIdUseCase = new FindProductsBySellerIdUseCase(findProductsBySellerIdGateway)
 
     def "Deve retornar uma lista com 1 produto"() {

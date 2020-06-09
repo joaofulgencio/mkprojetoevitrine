@@ -9,14 +9,14 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Component
-public class FindProductsBySellerIdGatewayImpl implements FindProductsBySellerIdGateway {
+public class FindProductsImpl implements FindProducts {
 
     private final ProductExtentedRepository productRepository;
 
     @Override
-    public List<ProductDatabaseDomain> execute(String sellerId) {
+    public List<ProductDatabaseDomain> execute() {
 
-        return productRepository.findBySellerId(sellerId);
+        return productRepository.findAll();
 
     }
 }

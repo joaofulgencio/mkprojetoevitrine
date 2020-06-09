@@ -3,7 +3,7 @@ package com.projeto.catalog.usecase;
 import com.projeto.catalog.commons.Translator;
 import com.projeto.catalog.domain.Image;
 import com.projeto.catalog.domain.Product;
-import com.projeto.catalog.gateway.FindProductsBySellerIdGateway;
+import com.projeto.catalog.gateway.FindProducts;
 import com.projeto.catalog.gateway.domain.ProductDatabaseDomain;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -16,15 +16,13 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class FindProductsBySellerIdUseCase {
 
-    private final FindProductsBySellerIdGateway findProductsBySellerIdGateway;
+    private final FindProducts findProducts;
 
-    public List<Product> execute(String sellerId) {
-        List<ProductDatabaseDomain> execute = findProductsBySellerIdGateway.execute(sellerId);
+    public List<Product> execute() {
+        List<ProductDatabaseDomain> execute = findProducts.execute();
         List<Product> productList = new ArrayList<>();
         execute.forEach(product -> {
             Product productTranslated = Translator.translate(product, Product.class);
-            List<Image> imageList = product.getImages().stream().map(Image::new).collect(Collectors.toCollection(ArrayList::new));
-            productTranslated.setImages(imageList);
             productList.add(productTranslated);
         });
 

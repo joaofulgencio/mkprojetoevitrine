@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "product")
@@ -16,12 +15,12 @@ import java.util.List;
 @NoArgsConstructor
 public class ProductDatabaseDomain {
 
-    @Id
-    private String sellerEmail;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String sellerId;
+    private String sellerEmail;
     private String productName;
-    @ElementCollection
-    private List<String> images;
+    private String images;
     private String description;
     private float price;
     private int quantity;

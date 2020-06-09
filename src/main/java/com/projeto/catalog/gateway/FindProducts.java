@@ -4,8 +4,8 @@ import com.projeto.catalog.gateway.domain.ProductDatabaseDomain;
 
 import java.util.List;
 
-public interface FindProductsBySellerIdGateway {
+public interface FindProducts {
 
-    List<ProductDatabaseDomain> execute(String sellerId);
+    List<ProductDatabaseDomain> execute();
 
 }
