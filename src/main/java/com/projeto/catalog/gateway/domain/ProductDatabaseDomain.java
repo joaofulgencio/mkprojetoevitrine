@@ -18,7 +18,7 @@ public class ProductDatabaseDomain {
 
     @Id
     private String sellerEmail;
-    private String id;
+    private String sellerId;
     private String productName;
     @ElementCollection
     private List<String> images;

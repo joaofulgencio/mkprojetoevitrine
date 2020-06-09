@@ -22,7 +22,7 @@ public class RegisterProductGatewayImpl implements RegisterProductGateway {
         List<String> imageList = product.getImages().stream().map(Image::getLink).collect(Collectors.toList());
         ProductDatabaseDomain productDb = Translator.translate(product, ProductDatabaseDomain.class);
         productDb.setImages(imageList);
-        productDb.setId(sellerId);
+        productDb.setSellerId(sellerId);
         return productRepository.save(productDb);
     }
 }
