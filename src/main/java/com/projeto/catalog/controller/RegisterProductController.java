@@ -23,5 +23,5 @@ public class RegisterProductController implements RegisterProductApi {
     @Override
     public ResponseEntity<ProductResponse> execute(ProductRequest productRequest, String sellerId) throws RegisterProductUseCaseExeception {
         return new ResponseEntity<>(Translator.translate(registerProductUseCase.execute(sellerId, Translator.translate(productRequest, Product.class)), ProductResponse.class), HttpStatus.OK);
-    }
+}
 }

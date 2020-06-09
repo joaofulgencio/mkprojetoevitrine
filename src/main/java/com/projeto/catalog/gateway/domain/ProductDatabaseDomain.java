@@ -17,6 +17,7 @@ public class ProductDatabaseDomain {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String sellerId;
     private String sellerName;
     private String productName;

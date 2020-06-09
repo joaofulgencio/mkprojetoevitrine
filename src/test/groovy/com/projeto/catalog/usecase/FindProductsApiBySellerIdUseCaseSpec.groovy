@@ -5,7 +5,7 @@ import com.projeto.catalog.gateway.FindProducts
 import com.projeto.catalog.gateway.domain.ProductDatabaseDomain
 import spock.lang.Specification
 
-class FindProductsBySellerIdUseCaseSpec extends Specification {
+class FindProductsApiBySellerIdUseCaseSpec extends Specification {
 
     FindProducts findProductsBySellerIdGateway = Mock(FindProducts)
     FindProductsBySellerIdUseCase findProductBySellerIdUseCase = new FindProductsBySellerIdUseCase(findProductsBySellerIdGateway)

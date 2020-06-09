@@ -1,6 +1,6 @@
 package com.projeto.catalog.controller;
 
-import com.projeto.catalog.api.FindProducts;
+import com.projeto.catalog.api.FindProductsApi;
 import com.projeto.catalog.commons.Translator;
 import com.projeto.catalog.controller.domain.ProductResponse;
 import com.projeto.catalog.domain.Product;
@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @CrossOrigin(origins = "*")
 @RestController
 @RequiredArgsConstructor
-public class FindProductsController implements FindProducts {
+public class FindProductsApiController implements FindProductsApi {
 
     private final FindProductsBySellerIdUseCase findProductsBySellerIdUseCase;
 
@@ -26,7 +26,7 @@ public class FindProductsController implements FindProducts {
 
     @Override
     public ResponseEntity<?> execute() {
-        List<ProductResponse> responseList = findProductsBySellerIdUseCase.execute().stream().map(FindProductsController::apply).collect(Collectors.toList());
+        List<ProductResponse> responseList = findProductsBySellerIdUseCase.execute().stream().map(FindProductsApiController::apply).collect(Collectors.toList());
         return new ResponseEntity<>(responseList, HttpStatus.OK);
     }
 

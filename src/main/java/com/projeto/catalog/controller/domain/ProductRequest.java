@@ -21,6 +21,7 @@ public class ProductRequest {
     @JsonProperty("desc")
     private String description;
     private double price;
+    @JsonProperty("qtd")
     private int quantity;
 
 }

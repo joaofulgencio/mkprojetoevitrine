@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("catalog")
-public interface FindProducts {
+public interface FindProductsApi {
 
     @GetMapping()
     ResponseEntity<?> execute();

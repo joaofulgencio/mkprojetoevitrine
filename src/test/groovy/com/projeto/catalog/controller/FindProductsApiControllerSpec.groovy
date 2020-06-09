@@ -18,8 +18,8 @@ import java.lang.reflect.Type
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
-@WebMvcTest(controllers = [FindProductsController])
-class FindProductsControllerSpec extends Specification {
+@WebMvcTest(controllers = [FindProductsApiController])
+class FindProductsApiControllerSpec extends Specification {
     @Autowired
     protected MockMvc mockMvc
 

@@ -11,8 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 public class ProductResponse {
 
-    @JsonProperty("id")
-    private String id;
+    private int id;
     private String sellerId;
     @JsonProperty("name")
     private String sellerName;
