@@ -11,7 +11,7 @@ public class Product {
 
     private int id;
     private String sellerId;
-    private String sellerEmail;
+    private String sellerName;
     private String productName;
     private String images;
     private String description;

@@ -12,6 +12,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ProductRequest {
 
+    @JsonProperty("name")
+    private String sellerName;
     @JsonProperty("title")
     private String productName;
     @JsonProperty("img")
